@@ -1,0 +1,66 @@
+<div>
+    <app-header></app-header>
+    <main>
+        
+       
+        @if(loginService.userInfo !== null){
+        <section class="saludo">
+            <div class="sal">
+                <h4>¡Bienvenido(a), {{loginService.userInfo.nombre}}!</h4>
+                <p>Descubre libros, historias y mundos que te inspirarán. Comparte tu pasión por la lectura y encuentra
+                    tu próxima aventura entre páginas. ¡Explora y disfruta!</p>
+            </div>
+            <div class="sal image-container"><img src="/Saludo.svg" alt="Saludo"></div>
+        </section>
+        }
+        <section>
+            <swiper-container autoplay speed="500" loop="true" effect="slide" fadeEffect>
+                <swiper-slide>
+                    <div class="slider">
+                        <img src="/Libro2.jpg" alt="Imagen de libros">
+                    </div>
+                </swiper-slide>
+                <swiper-slide>
+                    <div class="slider">
+                        <img src="/Libro1.jpg" alt="Imagen de libros">
+                    </div>
+                </swiper-slide>
+                <swiper-slide>
+                    <div class="slider">
+                        <img src="/Libro3.jpg" alt="Imagen de libros">
+                    </div>
+                </swiper-slide>
+            </swiper-container>
+        </section>
+        <section class="genero">
+            <h4>Géneros literarios</h4>
+            <div class="card-container">
+                <div class="card" *ngFor="let item of items">
+                    <img [src]="item.image" (click)="openModal(item.image)">
+                    <h5>{{ item.title }}</h5>
+                    <p>{{ item.description }}</p>
+                </div>
+            </div>
+            <div class="modal" *ngIf="selectedImage" (click)="closeModal()">
+                <span class="close" (click)="closeModal()">&times;</span>
+                <img class="modal-content" [src]="selectedImage">
+            </div>
+        </section>
+        <section class="about">
+            <h4>Acerca de nosotros</h4>
+            <p>En <span>Rincón del libro</span>, creemos en el poder transformador de las palabras. Somos un espacio
+                dedicado a los amantes de los libros, donde cada página cuenta una historia y cada título es una puerta
+                a nuevas aventuras.</p>
+            <p>Nuestro propósito es acercar a las personas al fascinante mundo de la lectura, ofreciendo una cuidada
+                selección de libros de diversos géneros, desde clásicos inmortales hasta las últimas novedades. Ya sea
+                que busques inspiración, conocimiento o simplemente una buena compañía, aquí encontrarás el libro
+                perfecto para ti.</p>
+            <p>Únete a nosotros y deja que los libros te lleven a lugares inimaginables. ¡Descubre, imagina y crece con
+                cada página!</p>
+        </section>
+        <section class="btn-listado">
+            <button mat-button>¡Descubre tu próxima lectura!</button>
+        </section>
+    </main>
+    <app-footer></app-footer>
+</div>
